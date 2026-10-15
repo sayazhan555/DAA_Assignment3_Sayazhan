@@ -89,4 +89,4 @@ More detailed results and explanations are available in `REPORT.md`.
 
 #### AI Use Acknowledgement
 
-I used ChatGPT to help understand the assignment requirements, write and review parts of the code, create tests, analyze benchmark results and prepare the documentation. I checked the implementations using JUnit 5, reference values and independent algorithm comparisons.**
+I used ChatGPT to help understand some parts of the assignment, get coding suggestions, and check my work. I tested the results using JUnit 5 and the reference values.
