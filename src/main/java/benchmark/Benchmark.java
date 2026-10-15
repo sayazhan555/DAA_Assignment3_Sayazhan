@@ -10,6 +10,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.List;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 public class Benchmark {
 
@@ -190,8 +193,12 @@ public class Benchmark {
             throw new IOException("Cannot create results folder");
         }
 
+
+        Path tempFile = Path.of("results", "results.tmp.csv");
+        Path finalFile = Path.of("results", "results.csv");
+
         try (PrintWriter writer =
-                     new PrintWriter(new FileWriter("results/results.csv"))) {
+                     new PrintWriter(new FileWriter(tempFile.toFile()))) {
 
             writer.println(
                     "algorithm,graph,n,m,time_ms,dsu_ops,"
@@ -231,8 +238,16 @@ public class Benchmark {
                     System.out.println("Passed n=" + n + ", m=" + m);
                 }
             }
+
         }
+
+        Files.move(
+                tempFile,
+                finalFile,
+                StandardCopyOption.REPLACE_EXISTING
+        );
 
         System.out.println("Results saved to results/results.csv");
     }
+
 }
